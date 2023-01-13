@@ -4,8 +4,8 @@ class Solution:
         merging and/or visiting every number is linear - can't do that. It must be O(log n)
         - observation: the median of the combined list must be in the range [nums1 median, nums2 median]
         - idea: iteratively trim ends of the combined list in cuts of the same size ([1,2,3] -> [2] with cut size 1)
-        - Note: this solution could be made more memory efficient by using left and right bounds instead of slicing.
-                I just wanted a solution that was easier to read  
+        - Note: this solution could be made more memory efficient by using left/right bounds instead of list slicing.
+                I just wanted a solution that was easier to read.
         """
        
         # Edge case:
