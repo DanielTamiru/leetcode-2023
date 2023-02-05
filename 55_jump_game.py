@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Solution:
     def canJump(self, nums: List[int]) -> bool:
         # DP: Break into subproblem canJump(pos) for pos = last...0
