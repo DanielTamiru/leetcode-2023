@@ -26,7 +26,7 @@ from typing import List
 #          always a more negative product (whose sign can be flipped with just one addition number) *
 #         So, when keeping track of your most positive and negative subarray products so far (if they exist), 
 #         you only need to consider a maximum of two subarrays at a time: the longest ones.
-#     - The function below is an encoding of this logic where checking of for negative numbers is circumvented
+#     - The function below is an encoding of this logic whereby checking of negative numbers is circumvented
 #       through the use of a max and min abstraction.
 
 class Solution:
