@@ -5,9 +5,8 @@ class Solution:
 
         for i, char in enumerate(s):
             past_i = substr_char_positions.get(char)
-            if past_i is not None:
-                if past_i in range(i - cur_len, i): cur_len = i - past_i 
-                else: del substr_char_positions[char]
+            if past_i is not None and past_i in range(i - cur_len, i): 
+                cur_len = i - past_i
             else: cur_len += 1
 
             substr_char_positions[char] = i
