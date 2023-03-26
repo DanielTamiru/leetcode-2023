@@ -1,5 +1,4 @@
 from queue import Queue
-from collections import namedtuple
 from typing import Optional
 
 # Definition for a binary tree node.
@@ -9,28 +8,27 @@ class TreeNode:
         self.left = left
         self.right = right
 
-DepthNode = namedtuple('DepthNode', ['node', 'depth'])
-
-
 class Solution:
     def minDepth(self, root: Optional[TreeNode]) -> int:
         """
         Implementing iterative BFS solution because searching in depth order will explore
         fewer (or as many) nodes and iterative generally consumes less memory
         """
-        dnodes = Queue()
-        if root: dnodes.put(DepthNode(root, 1))
-        
-        min_depth = 0
-       
-        while not dnodes.empty():
-            dnode = dnodes.get()
-            min_depth = max(min_depth, dnode.depth)
-            left_child, right_child = dnode.node.left, dnode.node.right
+        nodes = Queue()
+        if root: nodes.put(root)
 
-            if not left_child and not right_child: break # min depth found!
+        depth = 0
+
+        while not nodes.empty():
+            depth += 1
+            depth_size = nodes.qsize()
+
+            for _ in range(depth_size):
+                node = nodes.get()
+                if not node.left and not node.right: 
+                    return depth
+
+                if node.left: nodes.put(node.left)
+                if node.right: nodes.put(node.right)
             
-            if dnode.node.left: dnodes.put(DepthNode(left_child, min_depth + 1))
-            if dnode.node.right: dnodes.put(DepthNode(right_child, min_depth + 1))
-        
-        return min_depth# Definition for a binary tree node.
+        return depth
