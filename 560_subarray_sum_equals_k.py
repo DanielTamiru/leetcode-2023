@@ -24,4 +24,31 @@ class Solution:
             cumulative_sum_counts[cumulative_sum] += 1
         
         return subarray_count
-        
+
+
+###################################################################################
+## Variation of this problem:                                                    ##
+## Given an integer, k, determine the longest subarray in arr with sum at most k ##
+###################################################################################
+
+def max_length(arr, k):
+    """
+    Note: positive ints => the longer the subarrayy, the larger the sum
+    subarray is [start_idx, idx] inclusive and subarray_sum should
+    accurately reflect its sum at all times
+    """
+
+    start_idx = 0
+    subarray_sum = 0
+
+    result = 0
+
+    for idx in range(len(arr)):
+        subarray_sum += arr[idx]
+        if subarray_sum <= k: result = max(result, idx - start_idx + 1)
+
+        while subarray_sum > k and start_idx <= idx:
+            subarray_sum -= arr[start_idx]
+            start_idx += 1
+    
+    return result
