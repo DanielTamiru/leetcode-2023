@@ -11,8 +11,8 @@ class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
         """
         - Root of tree is first node in preorder
-        - Everything to left of this number in inorder is in the root's left subtree and conversely
-          for the right 
+        - Because keys in the list params are unique, everything to left of this number
+          in inorder is in the root's left subtree and conversely for the right 
         """
         if not preorder: return None
 
@@ -25,5 +25,5 @@ class Solution:
 
         root.left = self.buildTree(preorder[1: 1 + inorder_idx], inorder[:inorder_idx])
         root.right = self.buildTree(preorder[1 + inorder_idx:], inorder[1 + inorder_idx:])
-        
+
         return root
