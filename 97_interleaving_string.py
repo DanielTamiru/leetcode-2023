@@ -2,7 +2,7 @@ class Solution:
     def isInterleave(self, s1: str, s2: str, s3: str) -> bool:
         """
         -   Brute force approach: sequentially assign s3 chars to s1 or s2, branching at each point
-            where char could be assigned to both. If an assignment branch reaches end of s3 without
+            where char could be assigned to both. If an assignment branch reaches the end of s3 without
             encountering an unassignable char, s3 is an interleave
         -   This question explodes exponentially and has a ton of subproblem redundancy between the
             branches, making it a great candidate for memoization or a DP solution
